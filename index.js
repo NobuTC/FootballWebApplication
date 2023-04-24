@@ -1,10 +1,19 @@
 var express = require("express");
 require("dotenv").config();
 var bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 var app = express();
 
 const port = process.env.PORT || 5001;
+
+// Connect mongoose
+mongoose
+  .connect(process.env.DATABASE_URI)
+  .then(() => console.log("Mongoose Connected!"))
+  .catch((e) => {
+    console.log("Mongoose not working");
+  });
 
 // create application/json parser
 var jsonParser = bodyParser.json();
