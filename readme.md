@@ -7,9 +7,9 @@ Teams API Web application
 - Create a new team
 - Get all teams
 
-## Documentation
+## Demo Endpoint
 
-[Mongoose Documentation](https://mongoosejs.com/docs/api/document.html)
+https://footballteam.onrender.com
 
 ## API Reference
 
@@ -30,9 +30,9 @@ Teams API Web application
 | `name`    | `string` | **Required**. name of your team |
 | `country` | `string` | **Required**. country           |
 
-## Demo
+## Documentation
 
-To be done later...
+[Mongoose Documentation](https://mongoosejs.com/docs/api/document.html)
 
 ## License
 
