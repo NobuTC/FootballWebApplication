@@ -31,6 +31,9 @@ describe("Test Team API", () => {
       name: "team MouseBaddy",
       country: "Sweden",
     };
-    await request(app).post("/api/add").send(data).expect(200, data);
+    const response = await request(app).post("/api/add").send(data);
+    expect(response.statusCode).toBe(200);
+    expect(response.body.name).toBe(data.name);
+    expect(response.body.country).toBe(data.country);
   });
 });

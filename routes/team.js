@@ -18,9 +18,11 @@ router.post("/add", jsonParser, async function (req, res) {
     try {
       const savedTeam = await newTeam.save();
 
-      res
-        .status(200)
-        .json({ name: savedTeam.name, country: savedTeam.country });
+      res.status(200).json({
+        name: savedTeam.name,
+        country: savedTeam.country,
+        id: savedTeam._id,
+      });
     } catch (e) {
       res.status(500).send();
     }
