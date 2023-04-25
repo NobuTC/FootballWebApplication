@@ -30,6 +30,16 @@ https://footballteam.onrender.com
 | `name`    | `string` | **Required**. name of your team |
 | `country` | `string` | **Required**. country           |
 
+#### Get one team with given id
+
+```http
+  GET /api/:id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `string` | **Required**. your team id |
+
 ## Documentation
 
 [Mongoose Documentation](https://mongoosejs.com/docs/api/document.html)

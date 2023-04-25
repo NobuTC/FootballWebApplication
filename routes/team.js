@@ -34,8 +34,17 @@ router.get("/getall", async function (req, res) {
   res.json(teams);
 });
 
-router.get("/:id", function (req, res) {
-  res.json({ message: req.params.id });
+router.get("/:id", async function (req, res) {
+  try {
+    const team = await Team.findOne({ _id: req.params.id });
+    if (team) {
+      res.json(team);
+    } else {
+      res.status(404).send();
+    }
+  } catch (err) {
+    res.status(500).send("Wrong id");
+  }
 });
 
 router.put("/update/:id", function (req, res) {

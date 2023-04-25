@@ -36,4 +36,21 @@ describe("Test Team API", () => {
     expect(response.body.name).toBe(data.name);
     expect(response.body.country).toBe(data.country);
   });
+
+  it("Should not return team with a random correct format id", async () => {
+    const response = await request(app).get("/api/60d235f8d10f131bc825b880");
+    expect(response.statusCode).toBe(404);
+  });
+
+  it("Should not return team with a short id", async () => {
+    const response = await request(app).get("/api/OwO");
+    expect(response.statusCode).toBe(500);
+  });
+
+  it("Should return team with a correct id", async () => {
+    const response = await request(app).get("/api/6448307eaa10c9d444256c96");
+    expect(response.statusCode).toBe(200);
+  });
+
+  //
 });
