@@ -1,5 +1,5 @@
 var router = require("express").Router();
-var Team = require("./models/team.js");
+var Team = require("../models/team.js");
 var bodyParser = require("body-parser");
 
 // create application/json parser
@@ -17,7 +17,10 @@ router.post("/add", jsonParser, async function (req, res) {
 
     try {
       const savedTeam = await newTeam.save();
-      res.status(200).json(savedTeam);
+
+      res
+        .status(200)
+        .json({ name: savedTeam.name, country: savedTeam.country });
     } catch (e) {
       res.status(500).send();
     }
