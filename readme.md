@@ -40,6 +40,16 @@ https://footballteam.onrender.com
 | :-------- | :------- | :------------------------- |
 | `id`      | `string` | **Required**. your team id |
 
+#### Delete one team with given id
+
+```http
+  DELETE /api/delete/:id
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id`      | `string` | **Required**. your team id |
+
 ## Documentation
 
 [Mongoose Documentation](https://mongoosejs.com/docs/api/document.html)

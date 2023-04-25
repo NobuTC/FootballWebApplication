@@ -51,8 +51,17 @@ router.put("/update/:id", function (req, res) {
   res.json({ message: `update ${req.params.id}` });
 });
 
-router.delete("/delete/:id", function (req, res) {
-  res.json({ message: `delete ${req.params.id}` });
+router.delete("/delete/:id", async function (req, res) {
+  try {
+    const deleted = await Team.deleteOne({ _id: req.params.id });
+    if (deleted.deletedCount === 1) {
+      res.status(200).send();
+    } else {
+      res.status(404).send();
+    }
+  } catch (err) {
+    res.status(500).send("Something went wrong");
+  }
 });
 
 module.exports = router;

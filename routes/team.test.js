@@ -5,8 +5,8 @@ const app = require("../app");
 require("dotenv").config();
 
 describe("Test Team API", () => {
-  /* Connecting to the database before each test. */
-  beforeEach(async () => {
+  /* Connecting to the database before all test. */
+  beforeAll(async () => {
     await mongoose
       .connect(process.env.DATABASE_URI)
       .then(() => console.log("Mongoose Connected!"))
@@ -15,8 +15,8 @@ describe("Test Team API", () => {
       });
   });
 
-  /* Closing database connection after each test. */
-  afterEach(async () => {
+  /* Closing database connection after all test. */
+  afterAll(async () => {
     await mongoose.connection.close();
   });
 
@@ -26,7 +26,7 @@ describe("Test Team API", () => {
     expect(response.body.length).toBeGreaterThan(0);
   });
 
-  it("Should create a new team", async () => {
+  it("Should create and delete a new team", async () => {
     const data = {
       name: "team MouseBaddy",
       country: "Sweden",
@@ -35,6 +35,23 @@ describe("Test Team API", () => {
     expect(response.statusCode).toBe(200);
     expect(response.body.name).toBe(data.name);
     expect(response.body.country).toBe(data.country);
+
+    const deleteResponse = await request(app).delete(
+      `/api/delete/${response.body.id}`
+    );
+    expect(deleteResponse.statusCode).toBe(200);
+  });
+
+  it("Should not delete team with a not exist ID", async () => {
+    const response = await request(app).delete(
+      "/api/delete/60d235f8d10f131bc825b880"
+    );
+    expect(response.statusCode).toBe(404);
+  });
+
+  it("Should not delete team with a short id", async () => {
+    const response = await request(app).delete("/api/delete/woww");
+    expect(response.statusCode).toBe(500);
   });
 
   it("Should not return team with a random correct format id", async () => {
@@ -51,6 +68,4 @@ describe("Test Team API", () => {
     const response = await request(app).get("/api/6448307eaa10c9d444256c96");
     expect(response.statusCode).toBe(200);
   });
-
-  //
 });
