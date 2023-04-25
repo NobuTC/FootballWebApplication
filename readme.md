@@ -6,6 +6,9 @@ Teams API Web application
 
 - Create a new team
 - Get all teams
+- Get one team by id
+- Update team by given id
+- Delete team with given id
 
 ## Demo Endpoint
 
@@ -36,19 +39,22 @@ https://footballteam.onrender.com
   GET /api/:id
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. your team id |
-
 #### Delete one team with given id
 
 ```http
   DELETE /api/delete/:id
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `id`      | `string` | **Required**. your team id |
+#### Update team by id
+
+```http
+  PUT /api/update/:id
+```
+
+| Parameter | Type     | Description                     |
+| :-------- | :------- | :------------------------------ |
+| `name`    | `string` | **Required**. name of your team |
+| `country` | `string` | **Required**. country           |
 
 ## Documentation
 
