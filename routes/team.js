@@ -47,8 +47,40 @@ router.get("/:id", async function (req, res) {
   }
 });
 
-router.put("/update/:id", function (req, res) {
-  res.json({ message: `update ${req.params.id}` });
+router.put("/update/:id", jsonParser, async function (req, res) {
+  const name = req.body.name;
+  const country = req.body.country;
+
+  if (!name || !country) {
+    res.status(400).send();
+    return;
+  } else {
+    try {
+      // Check if team exists in Database
+      const foundTeam = await Team.findOne({ _id: req.params.id });
+      if (foundTeam) {
+        // Update team
+        const team = await Team.findOneAndUpdate(
+          { _id: req.params.id },
+          {
+            name,
+            country,
+          },
+          { upsert: true }
+        );
+
+        if (team) {
+          res.status(200).send();
+        } else {
+          res.status(404).send();
+        }
+      } else {
+        res.status(404).send();
+      }
+    } catch (err) {
+      res.status(500).send("Wrong id");
+    }
+  }
 });
 
 router.delete("/delete/:id", async function (req, res) {
