@@ -1,0 +1,14 @@
+@font-face {
+    font-family: Crimeson-regular;
+    src: url(../fonts/CrimsonText-Regular.ttf);
+}
+
+@font-face {
+    font-family: Crimeson-italic;
+    src: url(../fonts/CrimsonText-Italic.ttf);
+}
+
+body {
+    background-color: #FFC8DD;
+    font-family: Crimeson-regular;
+}

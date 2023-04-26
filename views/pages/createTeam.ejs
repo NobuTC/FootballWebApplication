@@ -1,0 +1,19 @@
+<%- include('../shared/header.ejs') %>
+    <h1>Create Team</h1>
+
+
+    <form id="createTeam">
+        <label for="name">Team Name:</label><br>
+        <input required="required" type="text" id="name" name="name"><br>
+
+        <label for="country">Country:</label><br>
+        <input required="required" type="text" id="country" name="country"><br>
+
+
+        <br>
+        <button type="submit">submit</button>
+    </form>
+
+
+    <script src="js/createTeam.js"></script>
+    <%- include('../shared/footer.ejs') %>

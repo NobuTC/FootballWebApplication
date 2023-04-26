@@ -1,0 +1,23 @@
+<%- include('../shared/header.ejs') %>
+    <h1>Update Team</h1>
+
+
+    <form id="updateTeam">
+
+        <label for="id">Team id:</label><br>
+        <input required="required" type="text" id="id" name="id"><br>
+
+        <label for="name">Team Name:</label><br>
+        <input required="required" type="text" id="name" name="name"><br>
+
+        <label for="country">Country:</label><br>
+        <input required="required" type="text" id="country" name="country"><br>
+
+
+        <br>
+        <button type="submit">Update</button>
+    </form>
+
+
+    <script src="js/updateTeam.js"></script>
+    <%- include('../shared/footer.ejs') %>
