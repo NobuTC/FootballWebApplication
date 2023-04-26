@@ -1,6 +1,7 @@
 var router = require("express").Router();
-var Team = require("../models/team.js");
 var bodyParser = require("body-parser");
+
+var Team = require("../models/team.js");
 
 // create application/json parser
 var jsonParser = bodyParser.json();
@@ -30,6 +31,7 @@ router.post("/add", jsonParser, async function (req, res) {
 });
 
 router.get("/getall", async function (req, res) {
+  // get all teams
   const teams = await Team.find();
   res.json(teams);
 });

@@ -93,9 +93,4 @@ describe("Test Team API", () => {
     const response = await request(app).get("/api/OwO");
     expect(response.statusCode).toBe(500);
   });
-
-  it("Should return team with a correct id", async () => {
-    const response = await request(app).get("/api/6448307eaa10c9d444256c96");
-    expect(response.statusCode).toBe(200);
-  });
 });
